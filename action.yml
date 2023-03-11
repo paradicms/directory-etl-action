@@ -1,0 +1,25 @@
+name: "Generate a static site from a Paradicms-formatted spreadsheet"
+description: "Generate a static site from a Paradicms-formatted spreadsheet"
+author: "Minor Gordon"
+branding:
+  icon: "loader"
+inputs:
+  app:
+    description: Directory name of a well-known Paradicms app (e.g., work-search) or path to the root directory of another app
+    required: true
+  app_configuration:
+    description: Path to an app configuration file, which controls the static site generator
+    required: false
+  debug:
+    description: Debug the action
+    required: false
+  markdown_directory_path:
+    default: "."
+    description: Path to a directory of Markdown files, defaults to the current directory
+    required: false
+  pipeline_id:
+    description: Pipeline id. Defaults to the name of the repository.
+    required: false
+runs:
+  using: "docker"
+  image: "Dockerfile"
