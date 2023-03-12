@@ -12,6 +12,7 @@ from paradicms_etl.transformers.markdown_directory_transformer import (
     MarkdownDirectoryTransformer,
 )
 from paradicms_ssg.git_hub_action import GitHubAction
+from paradicms_ssg.models.root_model_classes_by_name import ROOT_MODEL_CLASSES_BY_NAME
 
 
 class Action(GitHubAction):
@@ -45,7 +46,8 @@ class Action(GitHubAction):
             id=self.__inputs.pipeline_id,
             loader=self._create_loader(),
             transformer=MarkdownDirectoryTransformer(
-                pipeline_id=self.__inputs.pipeline_id
+                pipeline_id=self.__inputs.pipeline_id,
+                root_model_classes_by_name=ROOT_MODEL_CLASSES_BY_NAME,
             ),
         ).extract_transform_load()
 
