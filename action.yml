@@ -7,12 +7,16 @@ inputs:
   app_configuration_file_path:
     description: Path to an app configuration file, which controls the static site generator
     required: false
+  build_directory_path:
+    default: "_site"
+    description: Path to a directory where the generated static assets (CSS, HTML, JavaScript) should be placed
+    required: false
   debug:
     description: Debug the action
     required: false
   markdown_directory_path:
     default: "."
-    description: Path to a directory of Markdown files, defaults to the current directory
+    description: Path to a directory of Markdown files
     required: false
   pipeline_id:
     description: Pipeline id. Defaults to the name of the repository.
