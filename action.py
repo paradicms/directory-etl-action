@@ -11,7 +11,7 @@ from paradicms_etl.transformers.markdown_directory_transformer import (
     MarkdownDirectoryTransformer,
 )
 from paradicms_ssg.github_action import GitHubAction
-from paradicms_ssg.github_actions_inputs import GitHubActionInputs
+from paradicms_ssg.github_action_inputs import GitHubActionInputs
 from paradicms_ssg.models.root_model_classes_by_name import ROOT_MODEL_CLASSES_BY_NAME
 
 
