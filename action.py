@@ -3,7 +3,7 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 
-from etl_github_action import EtlGitHubAction
+from paradicms_etl.etl_github_action import EtlGitHubAction
 from paradicms_etl.extractors.markdown_directory_extractor import (
     MarkdownDirectoryExtractor,
 )
