@@ -23,7 +23,9 @@ class Action(EtlGitHubAction):
     class Inputs(EtlGitHubAction.Inputs):
         directory_path: str = dataclasses.field(
             default=".",
-            metadata={"description": "Path to a directory of Markdown files"},
+            metadata={
+                "description": "Path to a directory of JSON, Markdown, YAML, and/or other files containing data to extract, transform, and load"
+            },
         )
 
     def __init__(self, *, directory_path: str, **kwds):

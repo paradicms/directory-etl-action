@@ -12,7 +12,8 @@ inputs:
     required: false
   directory_path:
     default: .
-    description: Path to a directory of Markdown files
+    description: Path to a directory of JSON, Markdown, YAML, and/or other files containing
+      data to extract, transform, and load
     required: false
   loaded_data_directory_path:
     default: _data
