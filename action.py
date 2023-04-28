@@ -21,20 +21,20 @@ class Action(EtlGitHubAction):
 
     @dataclass(frozen=True)
     class Inputs(EtlGitHubAction.Inputs):
-        directory_path: str = dataclasses.field(
+        input_directory_path: str = dataclasses.field(
             default=".",
             metadata={
                 "description": "Path to a directory of JSON, Markdown, YAML, and/or other files containing data to extract, transform, and load"
             },
         )
 
-    def __init__(self, *, directory_path: str, **kwds):
+    def __init__(self, *, input_directory_path: str, **kwds):
         EtlGitHubAction.__init__(self, **kwds)
-        self.__directory_path = Path(directory_path)
+        self.__input_directory_path = Path(input_directory_path)
 
     def _run(self):
         Pipeline(
-            extractor=DirectoryExtractor(directory_path=self.__directory_path),
+            extractor=DirectoryExtractor(directory_path=self.__input_directory_path),
             id=self._pipeline_id,
             loader=self._loader,
             transformer=DirectoryTransformer(
