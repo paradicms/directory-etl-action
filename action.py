@@ -33,7 +33,7 @@ class Action(EtlGitHubAction):
         self.__input_directory_path = Path(input_directory_path)
 
     def _run(self):
-        Pipeline(
+        for _ in Pipeline(
             extractor=DirectoryExtractor(directory_path=self.__input_directory_path),
             id=self._pipeline_id,
             loader=self._loader,
@@ -41,7 +41,8 @@ class Action(EtlGitHubAction):
                 pipeline_id=self._pipeline_id,
                 root_model_classes_by_name=ROOT_MODEL_CLASSES_BY_NAME,
             ),
-        ).extract_transform_load()
+        )():
+            pass
 
 
 if __name__ == "__main__":
