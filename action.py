@@ -3,6 +3,8 @@ import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 
+from more_itertools import consume
+
 from paradicms_etl.etl_github_action import EtlGitHubAction
 from paradicms_etl.extractors.directory_extractor import (
     DirectoryExtractor,
@@ -33,16 +35,19 @@ class Action(EtlGitHubAction):
         self.__input_directory_path = Path(input_directory_path)
 
     def _run(self):
-        for _ in Pipeline(
-            extractor=DirectoryExtractor(directory_path=self.__input_directory_path),
-            id=self._pipeline_id,
-            loader=self._loader,
-            transformer=DirectoryTransformer(
-                pipeline_id=self._pipeline_id,
-                root_model_classes_by_name=ROOT_MODEL_CLASSES_BY_NAME,
-            ),
-        )():
-            pass
+        consume(
+            Pipeline(
+                extractor=DirectoryExtractor(
+                    directory_path=self.__input_directory_path
+                ),
+                id=self._pipeline_id,
+                loader=self._loader,
+                transformer=DirectoryTransformer(
+                    pipeline_id=self._pipeline_id,
+                    root_model_classes_by_name=ROOT_MODEL_CLASSES_BY_NAME,
+                ),
+            )()
+        )
 
 
 if __name__ == "__main__":
