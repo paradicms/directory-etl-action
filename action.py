@@ -4,13 +4,8 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from paradicms_etl.etl_github_action import EtlGitHubAction
-from paradicms_etl.extractors.directory_extractor import (
-    DirectoryExtractor,
-)
-from paradicms_etl.transformers.directory_transformer import (
-    DirectoryTransformer,
-)
-from paradicms_ssg.models.root_model_classes_by_name import ROOT_MODEL_CLASSES_BY_NAME
+from paradicms_etl.extractors.directory_extractor import DirectoryExtractor
+from paradicms_etl.transformers.directory_transformer import DirectoryTransformer
 
 
 class Action(EtlGitHubAction):
@@ -34,10 +29,7 @@ class Action(EtlGitHubAction):
     def _run(self):
         self._run_pipeline(
             extractor=DirectoryExtractor(directory_path=self.__input_directory_path),
-            transformer=DirectoryTransformer(
-                pipeline_id=self._pipeline_id,
-                root_model_classes_by_name=ROOT_MODEL_CLASSES_BY_NAME,
-            ),
+            transformer=DirectoryTransformer(pipeline_id=self._pipeline_id),
         )
 
 
