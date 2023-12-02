@@ -4,4 +4,4 @@ This GitHub Action extracts, transforms, and loads data from files in a director
 
 ### Usage
 
-See [action.yml](action.yml) or the [user documentation](https://paradicms.org/docs/reference/github-actions#directory-etl-action).
+See [action.yml](action.yml) or the [user documentation](https://paradicms.github.io/docs/reference/github-actions#directory-etl-action).
